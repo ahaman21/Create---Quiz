@@ -1,0 +1,848 @@
+/* ============================= */
+/* Temel Değişkenler ve Renkler */
+/* ============================= */
+:root {
+  --primary-color: #8678ff; /* Pastel menekşe */
+  --primary-dark: #6c63ff; /* Biraz daha koyu menekşe */
+  --secondary-color: #9ae6b4; /* Pastel yeşil */
+  --accent-color: #f6ad55; /* Pastel turuncu */
+  --background-color: #f7f9fc; /* Yumuşak gri-mavi arka plan */
+  --card-background: #ffffff;
+  --text-primary: #333333;
+  --text-secondary: #555555;
+  --border-radius: 12px;
+  --box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  --transition-speed: 0.3s;
+  --font-family: 'Poppins', sans-serif;
+}
+
+/* ================= */
+/* Genel Ayarlar     */
+/* ================= */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  font-family: var(--font-family);
+  color: var(--text-primary);
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100vh;
+}
+
+/* Ana Container: learning-progress */
+.learning-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #f8f9fa;
+  margin-top: 50px;
+}
+
+/* Scrollbar stilleri (WebKit) */
+.learning-progress::-webkit-scrollbar {
+  width: 8px;
+}
+.learning-progress::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 4px;
+}
+.learning-progress::-webkit-scrollbar-thumb {
+  background-color: var(--primary-dark);
+  border-radius: 4px;
+  border: 2px solid #f0f0f0;
+}
+.learning-progress::-webkit-scrollbar-thumb:hover {
+  background-color: #5a51f2;
+}
+
+/* ================= */
+/* Başlık Ayarları   */
+/* ================= */
+.learning-progress h2 {
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  background: var(--card-background);
+  padding: 1rem 0;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.learning-progress h3 {
+  color: var(--primary-dark);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.learning-progress h4 {
+  color: var(--text-primary);
+}
+
+/* =============== */
+/* Filtre Kutuları */
+/* =============== */
+.filters {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: var(--card-background);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+ 
+}
+
+.filter-group {
+  top: 40px;
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+}
+
+.filter-select {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.75rem;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  background: white;
+  color: #495057;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.filter-select:hover {
+  border-color: var(--primary-dark);
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #8884d8;
+  box-shadow: 0 0 0 2px rgba(136, 132, 216, 0.2);
+}
+
+.filter-button {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  background: white;
+  color: #495057;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  min-width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-button.active {
+  background: #8884d8;
+  color: white;
+  border-color: #8884d8;
+}
+
+.filter-button:hover {
+  background: #f8f9fa;
+}
+
+.filter-button.active:hover {
+  background: #7671d6;
+}
+
+/* =================== */
+/* Genel Kart Ayarları */
+/* =================== */
+.statistics,
+.weak-topics,
+.strong-topics,
+.recent-quizzes,
+.performance-chart,
+.topic-distribution {
+  background: var(--card-background);
+  border-radius: var(--border-radius);
+  padding: 0.8rem;
+  box-shadow: var(--box-shadow);
+  margin-bottom: 2rem;
+  transition: transform 0.2s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.statistics:hover,
+.weak-topics:hover,
+.strong-topics:hover,
+.recent-quizzes:hover,
+.performance-chart:hover,
+.topic-distribution:hover {
+  transform: translateY(-3px);
+}
+
+/* ================= */
+/* İstatistik Bölümü */
+/* ================= */
+.statistics h3 {
+  margin-bottom: 1.5rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 1rem;
+  background: #f8f9ff;
+  border-radius: 6px;
+  transition: all var(--transition-speed) ease;
+}
+.stat-item:hover {
+  background: #eef2ff;
+  transform: scale(1.02);
+}
+
+.stat-item span {
+  display: block;
+  color: #666;
+  margin-bottom: 0.25rem;
+  font-size: 0.8rem;
+}
+
+.stat-item strong {
+  color: var(--text-primary);
+  font-size: 1.2rem;
+}
+
+/* =============== */
+/* Genel İlerleme  */
+/* =============== */
+.overall-progress {
+  width: 100%;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.progress-bar {
+  height: 12px;
+  background: #e9ecef;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+  background: linear-gradient(90deg, #8884d8, #82ca9d);
+}
+
+.progress-label {
+  color: #495057;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  text-align: right;
+}
+
+/* ============= */
+/* Eksik Konular */
+/* ============= */
+.weak-topics,
+.strong-topics {
+  width: 100%;
+}
+
+.topics-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-dark) #f0f0f0;
+}
+
+.topics-list::-webkit-scrollbar {
+  width: 6px;
+}
+.topics-list::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 3px;
+}
+.topics-list::-webkit-scrollbar-thumb {
+  background-color: var(--primary-dark);
+  border-radius: 3px;
+}
+
+.topic-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  border: 1px solid #e9ecef;
+}
+
+.topic-item:hover {
+  background-color: #f5f5f5;
+}
+.topic-item:last-child {
+  border-bottom: none;
+}
+.topic-name {
+  color: #495057;
+  font-size: 0.9rem;
+}
+
+.topic-performance {
+  background: #e9ecef;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: #495057;
+}
+
+/* Zayıf Konular Sayaç Listesi Stilleri */
+.weak-topics-counters {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.topic-counter-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.topic-counter-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  background: #f8f9fa;
+  transition: transform 0.2s ease;
+}
+
+.topic-counter-item:hover {
+  transform: translateX(5px);
+}
+
+.topic-counter-item.high-count {
+  border-left: 4px solid #dc3545;
+  background: #fff5f5;
+}
+
+.topic-counter-item.low-count {
+  border-left: 4px solid #28a745;
+  background: #f0fff4;
+}
+
+.topic-count {
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+.high-count .topic-count {
+  color: #dc3545;
+  background: rgba(220, 53, 69, 0.1);
+}
+
+.low-count .topic-count {
+  color: #28a745;
+  background: rgba(40, 167, 69, 0.1);
+}
+
+/* Öneriler Bölümü Stilleri */
+.recommendations {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recommendations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.recommendation-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  transition: transform 0.2s ease;
+}
+
+.recommendation-item:hover {
+  transform: translateY(-2px);
+}
+
+.recommendation-icon {
+  font-size: 1.5rem;
+  color: #6f53f1;
+}
+
+.recommendation-item p {
+  margin: 0;
+  color: #333;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ============== */
+/* Son Sınavlar   */
+/* ============== */
+.recent-quizzes {
+  width: 100%;
+  background: var(--card-background);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--box-shadow);
+  margin-bottom: 2rem;
+  transition: transform 0.2s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.recent-quizzes:hover {
+  transform: translateY(-3px);
+}
+
+.quizzes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-dark) #f0f0f0;
+}
+
+.quizzes-list::-webkit-scrollbar {
+  width: 6px;
+}
+.quizzes-list::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 3px;
+}
+.quizzes-list::-webkit-scrollbar-thumb {
+  background-color: var(--primary-dark);
+  border-radius: 3px;
+}
+
+.quiz-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f8f9ff;
+  border-radius: 6px;
+  transition: all var(--transition-speed) ease;
+}
+.quiz-item:hover {
+  transform: translateX(5px);
+  background: #eef2ff;
+}
+.quiz-info h4 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+.quiz-date {
+  color: #666;
+  font-size: 0.85rem;
+  margin: 0.25rem 0 0 0;
+}
+.quiz-score .score {
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all var(--transition-speed) ease;
+}
+.score.good {
+  background: #e1fff0;
+  color: #28a745;
+}
+.score.good:hover {
+  background: #befee3;
+}
+.score.needs-improvement {
+  background: #fff3e0;
+  color: #f57c00;
+}
+.score.needs-improvement:hover {
+  background: #ffe0b2;
+}
+
+/* ============ */
+/* Grafik Alanı */
+/* ============ */
+.performance-chart {
+    width: 100%;
+}
+
+.topic-distribution {
+    width: 100%;
+}
+
+.sections-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.charts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  margin-top: 2rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.chart-section {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  min-height: 600px;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.chart-content {
+  height: 600px;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding: 0 1rem;
+}
+
+.chart-title {
+  color: #2c3e50;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.chart-legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.chart-legend-item span {
+  margin-left: 8px;
+  font-size: 14px;
+  color: #4a5568;
+}
+
+.chart-legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.weak-topics-analysis {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+.weak-topics-analysis h3 {
+    color: #495057;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.recent-exams {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.recent-exams h3 {
+  color: #495057;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.exam-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.exam-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  border: 1px solid #e9ecef;
+}
+
+.exam-info {
+  flex: 1;
+}
+
+.exam-name {
+  color: #495057;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.exam-date {
+  color: #6c757d;
+  font-size: 0.85rem;
+}
+
+.exam-score {
+  background: #e9ecef;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  color: #495057;
+  font-weight: 500;
+}
+
+.summary-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.summary-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.summary-label {
+  color: #6c757d;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.summary-value {
+  color: #495057;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.section-container {
+  display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    width: 100%;
+}
+
+.section-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.section-card:hover {
+    transform: translateY(-5px);
+}
+
+.section-card h3 {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #edf2f7;
+}
+
+/* Responsive Düzenlemeler */
+@media (max-width: 1400px) {
+    .section-container {
+        flex-direction: column;
+    }
+
+    .section-card {
+      min-width: 100%;
+  }
+
+  .charts-container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .learning-progress {
+        padding: 1rem;
+        min-height: calc(100vh - 60px);
+    }
+
+    .section-card,
+    .chart-section {
+        min-height: auto;
+        padding: 1.25rem;
+    }
+
+    .chart-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .filter-group {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+}
+
+
+@media (max-width: 1200px) {
+  .chart-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .summary-section {
+    grid-template-columns: 1fr;
+  }
+
+  .exam-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .exam-score {
+    align-self: flex-end;
+  }
+}
+
+/* ================= */
+/* Responsive Tasarım */
+/* ================= */
+
+/* ============= */
+/* Hata & Yükleme*/
+/* ============= */
+.loading,
+.error {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+.error {
+  color: #e74c3c;
+}
+
+.custom-tooltip {
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.custom-tooltip p {
+  margin: 0;
+  padding: 3px 0;
+  color: #333;
+  font-size: 14px;
+}
+
+.custom-tooltip p:first-child {
+  font-weight: bold;
+  color: #2d3748;
+}
+
+.chart-legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.chart-legend-item span {
+  margin-left: 8px;
+  font-size: 14px;
+  color: #4a5568;
+}

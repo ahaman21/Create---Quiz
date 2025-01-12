@@ -1,0 +1,9 @@
+export const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+export const UPLOAD_TIMEOUT = 30000; // 30 seconds
+export const DEFAULT_OPTION_COUNT = 4;
+export const MIN_QUESTION_COUNT = 1;
+export const MAX_QUESTION_COUNT = 50;
+export const DEFAULT_MULTIPLE_CHOICE_COUNT = 10;
+export const API_RATE_LIMIT_ERROR = 'rate limit exceeded';
+export const GENERIC_ERROR_MESSAGE = 'Bir hata oluştu. Lütfen tekrar deneyin.';
+export const DEFAULT_TOPICS = { 'general': 50 };

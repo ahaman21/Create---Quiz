@@ -1,0 +1,320 @@
+/* CSS Değişkenleri Güncelleniyor */
+:root {
+  --primary-color: #4A90E2; /* Canlı mavi */
+  --primary-dark: #357ABD;  /* Mavinin koyu tonu */
+  --secondary-color: #7B8D93; /* Gri tonu */
+  --success-color: #68D391; /* Canlı yeşil */
+  --error-color: #F56565;   /* Koyu kırmızı */
+  --background-color: #F7FAFC; /* Açık arka plan */
+  --text-primary: #2D3748; /* Koyu gri metin */
+  --text-secondary: #4A5568; /* Orta gri metin */
+  --border-radius: 15px; /* Yuvarlatılmış köşeler */
+  --box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05); /* Yumuşak gölge */
+}
+
+/* Arka Plan ve Genel Stil */
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #E2E8F0 0%, #F7FAFC 100%); /* Hafif degrade */
+  font-family: 'Inter', sans-serif; /* Modern yazı tipi */
+  color: var(--text-primary);
+}
+
+/* Modal Arkaplanı */
+.quiz-results-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Koyu arkaplan */
+  backdrop-filter: blur(10px); /* Bulanıklık efekti */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* En üstte kalması için */
+}
+
+/* Layout Düzenlemeleri */
+.quiz-results {
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem;
+  background: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  
+  overflow-y: hidden;
+  animation: modalFadeIn 0.4s ease-out; /* Yumuşak animasyon */
+  width: 85%;
+  max-width: 800px; /* Maksimum genişlik */
+  transition: all 0.3s ease;
+  position: relative;
+  
+}
+
+/* Modal Açılma Animasyonu */
+@keyframes modalFadeIn {
+  from {
+      opacity: 0;
+      transform: scale(0.95) translateY(-30px);
+  }
+  to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+  }
+}
+
+.quiz-results::-webkit-scrollbar {
+  width: 8px; /* Daha kalın kaydırma çubuğu */
+}
+
+.quiz-results::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1); /* Hafif arka plan */
+  border-radius: 4px;
+}
+
+.quiz-results::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.quiz-results h2 {
+  text-align: center;
+  color: var(--primary-dark); /* Koyu mavi başlık */
+  margin-bottom: 2.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+}
+
+.results-summary,
+.quiz-summary {
+  background: linear-gradient(145deg, #ffffff, #edf2f7); /* Hafif degrade */
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 2.5rem;
+  text-align: center;
+  box-shadow: var(--box-shadow);
+}
+
+.results-summary p,
+.quiz-summary p {
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+/* Puan Özeti ve Süre Bilgisi */
+.score-section h3,
+.time-section h3,
+.analysis-section h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color); /* Canlı mavi başlık */
+  font-weight: 600;
+}
+
+/* Hata Mesajları */
+.error-message {
+  color: var(--error-color);
+  font-weight: 600;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+/* Detaylı Analiz */
+.analysis-section {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 2.5rem;
+}
+
+/* Soru Detayları Alanı */
+.questions-review {
+  margin: 2.5rem 0;
+}
+
+.questions-review h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  text-align: left;
+}
+
+/* Tek Soru Kartı */
+.question-review {
+  position: relative;
+  margin: 1.2rem 0;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  border-left: 5px solid #E2E8F0; /* Hafif kenarlık */
+  background: #F7FAFC;
+  box-shadow: 0 4px 6px -6px rgba(0,0,0,0.1); /* Hafif gölge */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.question-review:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Daha belirgin gölge */
+}
+
+.question-review p {
+  margin: 0.6rem 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.question-review p strong {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Doğru - Yanlış Renklendirme */
+.question-review.correct {
+  background: #F0FFF4;
+  border-left-color: var(--success-color);
+}
+
+.question-review.incorrect {
+  background: #FFF5F5;
+  border-left-color: var(--error-color);
+}
+
+/* Zorluk Rozetleri */
+.difficulty-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.difficulty-level {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.difficulty-level.easy {
+  background-color: #DEF7EC;
+  color: #03543F;
+}
+
+.difficulty-level.medium {
+  background-color: #FDF6B2;
+  color: #723B13;
+}
+
+.difficulty-level.hard {
+  background-color: #FDE8E8;
+  color: #9B1C1C;
+}
+
+/* Soru Başlığı ve İçeriği */
+.question-container {
+    margin-bottom: 24px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background-color: #F8FAFC;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.topic-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.main-topic {
+    font-weight: 600;
+    color: #2D3748;
+}
+
+.topic-separator {
+    color: #718096;
+    margin: 0 4px;
+}
+
+.sub-topic {
+    color: #4A5568;
+}
+
+.question-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #2D3748;
+    margin-bottom: 16px;
+}
+
+.question-number {
+    font-weight: 600;
+    margin-right: 8px;
+    color: #4A5568;
+}
+
+/* Butonlar */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.restart-button {
+  display: block;
+  width: auto;
+  padding: 1rem 2rem;
+  background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+  color: #FFFFFF;
+  border: none;
+  border-radius: 30px; /* Yuvarlak buton */
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2); /* Belirgin gölge */
+  font-family: 'Inter', sans-serif;
+}
+
+.restart-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* Daha belirgin gölge */
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+  .quiz-results {
+      width: 95%;
+      padding: 1.5rem;
+  }
+
+  .questions-review h3 {
+      text-align: center;
+  }
+
+  .question-review {
+      padding: 1.2rem;
+  }
+
+  .restart-button {
+      width: 100%;
+      padding: 1rem;
+  }
+}

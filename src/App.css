@@ -1,0 +1,528 @@
+/* =========================== */
+/* Temel Değişkenler ve Renkler */
+/* =========================== */
+:root {
+  --primary-color: #6f53f1;      /* Daha çarpıcı bir menekşe */
+  --primary-dark: #563ccd;       /* Koyu menekşe tonu */
+  --primary-light: #8678ff;      /* Açık menekşe */
+  
+  --secondary-color: #7B8D93;
+  --secondary-dark: #5A6B73;
+  --secondary-light: #A1B1B8;
+  
+  --background-color: #f8fbff;   /* Biraz daha açık, ferah arka plan */
+  --surface-color: #ffffff;      
+  --text-primary: #333333;
+  --text-secondary: #555555;
+  --text-muted: #94a3b8;
+  
+  /* Vurgu Renkleri */
+  --success-color: #48BB78; 
+  --warning-color: #f59e0b;  
+  --error-color: #F56565;    
+  --info-color: #60a5fa;     
+  
+  /* Tipografi */
+  --font-family-primary: 'Poppins', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-heading: 'Montserrat', 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* Boyutlar */
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  
+  --border-radius: 12px;
+  
+  /* Gölge ve Geçişler */
+  --box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  --transition-speed: 0.3s;
+}
+
+/* ============== */
+/* Genel Ayarlar  */
+/* ============== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  background-color: var(--background-color);
+  color: var(--text-primary);
+}
+
+.App {
+  text-align: center;
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Stili */
+header {
+  top: 0;
+  left: 0;
+  right: 0;
+
+  background-color: var(--surface-color);
+  box-shadow: var(--box-shadow);
+  padding: 0.5rem 1rem;
+  height: 60px;
+}
+
+/* İçerik Alanı */
+.App-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  flex: 1;
+  position: relative;
+  padding-top: 60px; /* Add padding to match the header height */
+}
+
+.main-content {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+  padding: 1.5rem;
+  background-color: #f0f2f8;
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Upload Section */
+.upload-section {
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  box-shadow: var(--box-shadow);
+  position: sticky;
+  top: 120px; /* Increase offset so it’s not hidden under the header */
+  z-index: 999;
+}
+
+/* Bölüm (Section) Yapısı  */
+.left-section {
+  width: 20%;
+  min-width: 260px;
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: auto;
+  padding: 1rem;
+}
+
+.right-section {
+  width: 80%;
+  flex: 1;
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  height: auto;
+  position: relative;
+  padding: 1rem;
+}
+
+/* ============== */
+/* Quiz Listesi    */
+/* ============== */
+.quiz-list-container {
+  flex: 1;
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  position: sticky;
+  top: 61px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.quiz-list-header {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  padding: 1rem;
+  background: var (--surface-color);
+  border-bottom: 2px solid var(--text-muted);
+  flex-shrink: 0;
+}
+
+.quiz-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-dark) var(--background-color);
+}
+
+.quiz-list::-webkit-scrollbar {
+  width: 6px;
+}
+.quiz-list::-webkit-scrollbar-track {
+  background: var(--background-color);
+  border-radius: 3px;
+}
+.quiz-list::-webkit-scrollbar-thumb {
+  background-color: var(--primary-dark);
+  border-radius: 3px;
+}
+
+.quiz-item {
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  transition: all var(--transition-speed);
+  cursor: pointer;
+  border: 1px solid #e2e8f0;
+}
+.quiz-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-view {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  background: var(--background-color);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--text-muted);
+}
+.quiz-view::-webkit-scrollbar {
+  width: 6px;
+}
+.quiz-view::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+.quiz-view::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 3px;
+}
+.quiz-view::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* ============ */
+/* Yükleme & Hata */
+/* ============ */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  padding: 1rem;
+}
+.error-message {
+  background: var(--error-color);
+  color: white;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin: 1rem 0;
+  text-align: left;
+  border-left: 6px solid var(--error-color);
+  font-weight: 500;
+}
+
+/* ============== */
+/* Dosya Yükleme  */
+/* ============== */
+.upload-section {
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  box-shadow: var(--box-shadow);
+  position: sticky;
+  top: 120px;
+  z-index: 999;
+  margin-bottom: 1rem;
+}
+
+.file-input {
+  display: block;
+  padding: 0.75rem;
+  margin: 0.5rem auto;
+  border: 2px dashed var(--primary-dark);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition-speed);
+  font-size: 0.9rem;
+  width: 80%;
+  color: var(--text-secondary);
+  background-color: #fafaff;
+  font-variant: normal;
+}
+.file-input:hover {
+  border-color: var(--primary-color);
+  background-color: #eef2ff;
+}
+
+/* ============ */
+/* Medi Queries */
+/* ============ */
+@media (max-width: 1024px) {
+  .App-content {
+    flex-direction: column;
+  }
+  .main-content {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .App-content {
+    flex-direction: column;
+    height: auto;
+    padding: 0.5rem;
+  }
+  .left-section {
+    width: 100%;
+    height: auto;
+    margin-top: 62px;
+  }
+  .right-section {
+    width: 100%;
+  }
+  .quiz-item:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* Ek Süslemeler, Buton Stilleri vs. */
+.generate-button {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+  margin-top: 0.5rem;
+}
+.generate-button:hover {
+  background: var(--primary-dark);
+}
+.generate-button:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
+
+/* ================= */
+/* Değerleri kaydırma */
+/* ================= */
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 1rem;
+  min-height: calc(100vh - 200px);
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  margin-top: 1rem;
+}
+
+/* Başlıklar */
+h1 {
+  font-family: var(--font-family-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 1.5rem;
+}
+h2 {
+  font-family: var(--font-family-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+h3 {
+  font-family: var(--font-family-heading);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+/* ================ */
+/* Quiz Oluşturma vb */
+/* ================ */
+.quiz-setup {
+  max-width: 21%;
+  min-width: 21%;
+  min-height: 100%;
+  max-height: 100%;
+  padding: 1rem;
+  padding-top: 0;
+}
+.file-upload-section {
+  height: 16%;
+  
+  border: 1px solid #e2e8f0;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+.file-name{
+  width: 80%;
+  padding: 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--border-radius);
+  background: var(--background-color);
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+  font-weight: 500
+}
+.create-quiz-button {
+  margin: 0.5rem;
+  width: 80%;
+  padding: 0.5rem;
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+.create-quiz-button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* ==================== */
+/* Sonuç Penceresi vs.  */
+/* ==================== */
+.results-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.results-container {
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+.score {
+  text-align: center;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: #f8f9ff;
+  border-radius: var(--border-radius);
+}
+.score p {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* Soru İnceleme */
+.questions-review {
+  margin-top: 2rem;
+}
+.question-result {
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.question-result.correct {
+  background: rgba(0, 255, 0, 0.05);
+  border-left: 4px solid #48BB78;
+}
+.question-result.incorrect {
+  background: rgba(255, 0, 0, 0.05);
+  border-left: 4px solid #F56565;
+}
+
+.close-results-button {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  margin: 2rem auto 0;
+  padding: 1rem;
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all var(--transition-speed);
+}
+.close-results-button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================ */
+/* Pre Assessment   */
+/* ================ */
+.pre-assessment-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+.pre-assessment-overlay > div {
+  width: 100%;
+  max-width: 800px;
+  animation: slideIn 0.3s ease-out;
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

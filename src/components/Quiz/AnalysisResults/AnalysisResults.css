@@ -1,0 +1,168 @@
+/* Define CSS Variables */
+:root {
+  --padding: 1.5rem;
+  --background-color: #F7FAFC; /* Hafif arka plan */
+  --border-radius: 15px;
+  --box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  --margin: 1.2rem 0;
+  --text-primary: #2D3748;
+  --text-secondary: #4A5568;
+  --primary-color: #4A90E2;
+}
+
+.analysis-results {
+  padding: var(--padding);
+  background: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin: var(--margin);
+  display: flex;
+  flex-direction: column;
+}
+
+.analysis-results h2 {
+  color: var(--primary-color);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: 'Inter', sans-serif; /* Modern yazı tipi */
+}
+
+.result-section {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #FFFFFF; /* Beyaz arka plan */
+  border-radius: 10px;
+  border-left: 4px solid var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px -6px rgba(0,0,0,0.1); /* Hafif gölge */
+}
+
+.result-section:last-child {
+  margin-bottom: 0;
+}
+
+.result-section h3 {
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.result-section h4 {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0.6rem 0 0.4rem;
+}
+
+.result-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.result-section li {
+  padding: 0.4rem 0;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.result-section li:before {
+  content: "•";
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.result-section p {
+  color: var(--text-secondary);
+  margin: 0.4rem 0;
+  line-height: 1.4;
+  font-size: 0.9rem;
+}
+
+/* Konu bazlı performans için özel stil */
+.result-section:nth-child(5) div {
+  padding: 0.8rem;
+  background: #F7FAFC; /* Hafif arka plan */
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); /* Hafif gölge */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Geçiş efekti */
+}
+
+.result-section:nth-child(5) div:hover {
+  transform: translateY(-2px); /* Hafif yukarı kaldırma */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12); /* Daha belirgin gölge */
+}
+
+.result-section:nth-child(5) div:last-child {
+  margin-bottom: 0;
+}
+
+/* Zorluk seviyesi performansı için özel stil */
+.result-section:last-child p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: #F7FAFC;
+  border-radius: 10px;
+  margin: 0.4rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  font-size: 0.9rem;
+}
+/* Flexbox Düzenlemeleri */
+.topic-performance {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.radar-chart-container {
+ display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 2rem;
+}
+.performance-bar {
+  flex: 1;
+  background-color: #E2E8F0; /* Açık gri */
+  border-radius: 5px;
+  height: 28px;
+  overflow: hidden;
+}
+
+/* Geçiş ve Animasyon Efektleri */
+.topic-performance .performance-fill {
+  transition: width 0.4s ease-in-out; /* Yumuşak geçiş */
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+  .analysis-results {
+      padding: 1.2rem;
+  }
+
+  .result-section {
+      padding: 0.9rem;
+  }
+
+  .result-section h3 {
+      font-size: 1.1rem;
+  }
+
+  .result-section h4 {
+      font-size: 0.95rem;
+  }
+
+  .result-section li,
+  .result-section p {
+      font-size: 0.85rem;
+  }
+}

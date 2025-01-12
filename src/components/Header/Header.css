@@ -1,0 +1,207 @@
+.App-header {
+  background: linear-gradient(45deg, rgba(56, 66, 97, 0.97), rgba(240, 242, 255, 0.97));
+  padding: 0.4rem 0;
+  box-shadow: 0 2px 8px rgba(111, 83, 241, 0.1);
+  height: 60px; /* Ensure the header has a fixed height */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(111, 83, 241, 0.1);
+}
+
+/* Header içi container */
+.header-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  height: 100%;
+}
+
+/* Logo ve Timer Bölümü */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo h1 {
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Zaman göstergesi */
+.timer {
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Menü Kısmı */
+.nav-menu ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+/* Linklerin Stili */
+.nav-link {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+}
+
+/* Link üzerine gelme efekti */
+.nav-link:hover {
+  color: var(--primary-color);
+  background: rgba(111, 83, 241, 0.1);
+}
+
+/* Admin Link için özel stil */
+.admin-link {
+  background-color: #ff6f6f;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  color: white;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Admin link hover/tıklama */
+.admin-link:hover {
+  background-color: #f55353;
+  transform: translateY(-2px);
+}
+
+/* Giriş - Çıkış (Auth) Butonu */
+.auth-button {
+  background-color: var(--primary-color);
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1.2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.auth-button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* Çıkış (Logout) Butonu: Yeni tasarım */
+.auth-button.logout {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff4757 100%);
+  border: none;
+  color: #ffffff;
+  padding: 0.6rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(255, 71, 87, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-button.logout:hover {
+  background: linear-gradient(135deg, #ff4757 0%, #ff6b6b 100%);
+  transform: translateY(-2px) rotate(180deg);
+  box-shadow: 0 6px 20px rgba(255, 71, 87, 0.3);
+}
+
+.logout-icon {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s ease;
+}
+
+.auth-button.logout:hover .logout-icon {
+  transform: rotate(-180deg);
+}
+
+/* Giriş butonu için yeni stil (isteğe bağlı) */
+.auth-button.login {
+  background: linear-gradient(135deg, #6f53f1 0%, #8678ff 100%);
+  border: none;
+  padding: 0.6rem 1.5rem;
+  box-shadow: 0 4px 15px rgba(111, 83, 241, 0.2);
+}
+
+.auth-button.login:hover {
+  background: linear-gradient(135deg, #563ccd 0%, #6f53f1 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(111, 83, 241, 0.3);
+}
+
+/* Ana içeriği header'ın altına kaydır */
+
+/* Mobil uyum */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 1rem;
+  }
+
+  .nav-menu ul {
+    gap: 1rem;
+  }
+
+  .nav-link {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .auth-button {
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .logo h1 {
+    font-size: 1.2rem;
+  }
+
+  .timer {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .auth-button.logout {
+    width: 36px;
+    height: 36px;
+    padding: 0.4rem;
+  }
+
+  .logout-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
