@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
     "version": 2,
     "functions": {
       "api/*.py": {
@@ -8,12 +7,3 @@
     }
   }
   
-=======
-  "version": 2,
-  "functions": {
-    "api/*.py": {
-      "runtime": "python3.9"
-    }
-  }
-}
->>>>>>> 7e8de7bf730673775e9e150f15d6f0f73d2535b7
